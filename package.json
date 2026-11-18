@@ -1,0 +1,20 @@
+{
+  "name": "airgap-sonic-modem",
+  "version": "1.0.0",
+  "description": "AirGap Pulse — Trạm Modem Không Mạng: Truyền Tin Sóng Âm Cận Siêu Âm 18.5kHz (16-MFSK + Tự Sửa Lỗi Hamming SECDED), Cổng Quang Học Fountain Matrix (GF(2) Chống Rớt Khung Hình) & Khóa Nhịp Gõ Mặt Bàn (Port 4166)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test_server.js"
+  },
+  "keywords": [
+    "air-gap-modem",
+    "ultrasonic-mfsk-goertzel",
+    "hamming-secded-fec",
+    "luby-transform-fountain-code",
+    "gf2-gaussian-elimination",
+    "acoustic-rhythm-vault"
+  ],
+  "author": "AI_App Ecosystem",
+  "license": "MIT"
+}

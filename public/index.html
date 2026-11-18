@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AirGap Pulse — Modem Sóng Âm 18.5kHz &amp; Cổng Quang Học Fountain (Port 4166)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-pod">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="4" fill="#22D3EE"/>
+            <path d="M11 11C7.2 14.8 7.2 21.2 11 25M25 11C28.8 14.8 28.8 21.2 25 25" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6.5 6.5C0.5 12.8 0.5 23.2 6.5 29.5M29.5 6.5C35.5 12.8 35.5 23.2 29.5 29.5" stroke="#06B6D4" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="3 2.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="eyebrow">ZERO-NETWORK PHYSICAL DATA TRANSPORT</div>
+          <h1>AirGap Pulse <span class="port-tag">Port 4166</span></h1>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge emerald">16-MFSK Ultrasonic 18.5kHz</span>
+        <span class="badge cyan">Hamming(8,4) SECDED Auto-Repair</span>
+        <span class="badge amber">GF(2) Rateless Fountain Matrix</span>
+      </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="panel-sonic">
+        <span class="t-idx">01</span>
+        <div>
+          <b>Modem Sóng Âm Cận Siêu Âm (18.5 kHz)</b>
+          <span>16-MFSK · Tự vá lỗi đảo bit Hamming · Loa ➔ Micro</span>
+        </div>
+      </button>
+      <button class="tab" data-tab="panel-fountain">
+        <span class="t-idx">02</span>
+        <div>
+          <b>Cổng Quang Học Vòi Phun (Fountain QR)</b>
+          <span>Mã Luby-Transform GF(2) · Rớt 40% Frame vẫn đủ File</span>
+        </div>
+      </button>
+      <button class="tab" data-tab="panel-knock">
+        <span class="t-idx">03</span>
+        <div>
+          <b>Két Sắt Gõ Nhịp Mặt Bàn Không Chạm</b>
+          <span>Cảm biến xung âm Micro · Nhịp mật ước bất biến tốc độ</span>
+        </div>
+      </button>
+    </nav>
+
+    <!-- ================================================================== -->
+    <!-- TRẠM 01: ULTRASONIC & CYBERPUNK 16-MFSK ACOUSTIC MODEM             -->
+    <!-- ================================================================== -->
+    <section id="panel-sonic" class="panel active">
+      <div class="hero-bar">
+        <div>
+          <h2>Trạm 01 — Truyền Tin Nhắn Mật Qua Không Khí Khi Đã Tắt Sạch Wi-Fi &amp; Bluetooth</h2>
+          <p>Mã hóa từng byte thành các nốt tần số <b>16-MFSK</b> kèm mã tự sửa lỗi <b>Hamming(8,4) SECDED</b>. Kể cả có tiếng ồn phòng hay tiếng vỗ tay làm gãy bit trên không trung, bộ thu <b>Goertzel</b> vẫn tự động khôi phục nguyên vẹn!</p>
+        </div>
+        <button id="btn-sonic-quick" class="btn-outline">⚡ Bắn &amp; Giải Mã Thử Ngay</button>
+      </div>
+
+      <div class="two-col">
+        <!-- BỘ PHÁT SÓNG ÂM (TX) -->
+        <div class="card">
+          <h3>📡 Máy Phát Sóng Âm (Acoustic Transmitter — TX)</h3>
+
+          <label class="lbl">Thông điệp mật cần bắn qua loa ngoài</label>
+          <textarea id="sonic-msg" rows="3" class="textarea mono">COORD: 10.7769N, 106.7009E
+ACCESS_TOKEN: SONIC-7749-OMEGA
+STATUS: Tắt toàn bộ mạng — Chỉ liên lạc qua sóng âm!</textarea>
+
+          <div class="row-2">
+            <div>
+              <label class="lbl">Chế độ dải tần vật lý</label>
+              <select id="sonic-profile" class="select">
+                <option value="ultrasonic">🤫 Tàng Hình Cận Siêu Âm (17.55 – 19.58 kHz)</option>
+                <option value="cyber">🤖 Cyberpunk Modem Nghe Rõ (1.65 – 4.35 kHz)</option>
+              </select>
+            </div>
+            <div>
+              <label class="lbl">Mật khẩu khóa AES-256-GCM (Tùy chọn)</label>
+              <input id="sonic-pass" type="password" class="input" placeholder="Để trống nếu không khóa" />
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button id="btn-sonic-play-tx" class="btn-primary">🔊 Điều Chế &amp; Phát Ra Loa Thật</button>
+            <button id="btn-sonic-dl-wav" class="btn-secondary" disabled>⬇️ Tải File .WAV</button>
+          </div>
+          <audio id="sonic-audio-el" controls class="audio-player hidden"></audio>
+
+          <!-- BỘ MÔ PHỎNG KÊNH NHIỄU PHÒNG & VỖ TAY GÃY BIT -->
+          <div class="sim-box">
+            <div class="sim-hdr">
+              <b>🧪 Phòng Thử Sức Bền Kênh Âm Học (AWGN + Dội Tường + Sửa Lỗi ECC)</b>
+            </div>
+            <div class="row-2">
+              <div>
+                <label class="lbl">Mức nhiễu nền phòng (SNR): <b id="snr-val-lbl">8 dB (Quán cà phê ồn)</b></label>
+                <input id="sonic-snr" type="range" min="0" max="26" value="8" class="range" />
+              </div>
+              <div style="display:flex;align-items:end;">
+                <label class="chk-card">
+                  <input id="sonic-burst" type="checkbox" checked />
+                  <span>💥 Chèn xung vỗ tay phá gãy bit giữa chừng</span>
+                </label>
+              </div>
+            </div>
+            <button id="btn-sonic-sim" class="btn-secondary full-w" style="margin-top:10px;">
+              🔁 Bắn Thử Qua Phòng Ồn ➔ Kiểm Chứng Tự Vá Lỗi Hamming(8,4)
+            </button>
+          </div>
+        </div>
+
+        <!-- BỘ THU & GIẢI ĐIỀU CHẾ GOERTZEL (RX) -->
+        <div class="card">
+          <div class="card-hdr">
+            <h3>🎙️ Máy Thu &amp; Giải Điều Chế 16 Kênh Goertzel (RX)</h3>
+            <label class="btn-ghost small file-btn">
+              📂 Giải mã file .WAV
+              <input id="sonic-wav-upload" type="file" accept=".wav,audio/wav" hidden />
+            </label>
+          </div>
+
+          <div class="rx-controls">
+            <button id="btn-mic-rx" class="btn-primary cyan">🎙️ Thu Sóng Âm Qua Micro (5 Giây)</button>
+            <input id="sonic-rx-pass" type="password" class="input" placeholder="Mật khẩu giải mã (nếu có)" />
+          </div>
+
+          <!-- Ma trận phổ 16 kênh MFSK -->
+          <div class="lbl">Bản đồ năng lượng 16 kênh tần số MFSK (Mỗi cột = 1 Symbol 4-bit):</div>
+          <div class="canvas-box">
+            <canvas id="mfsk-canvas" width="560" height="170"></canvas>
+          </div>
+
+          <div class="stats-4">
+            <div class="s-cell"><span>Dải nhận diện</span><b id="rx-prof">—</b></div>
+            <div class="s-cell"><span>SNR Thực Đo</span><b id="rx-snr" class="text-cyan">— dB</b></div>
+            <div class="s-cell"><span>Bit Lỗi Đã Tự Vá</span><b id="rx-ecc" class="text-amber">0 bits</b></div>
+            <div class="s-cell"><span>Toàn vẹn CRC-16</span><b id="rx-crc">—</b></div>
+          </div>
+
+          <div class="decoded-pane">
+            <div class="decoded-title">BẢN TIN KHÔI PHỤC TỪ SÓNG ÂM:</div>
+            <pre id="sonic-rx-output" class="decoded-pre">Chưa thu tín hiệu. Bấm "⚡ Bắn &amp; Giải Mã Thử Ngay" hoặc bật Micro trên máy thứ 2!</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- TRẠM 02: OPTICAL FOUNTAIN MATRIX STREAM (GF(2) GAUSS-JORDAN)       -->
+    <!-- ================================================================== -->
+    <section id="panel-fountain" class="panel">
+      <div class="hero-bar">
+        <div>
+          <h2>Trạm 02 — Bắn File Qua Ánh Sáng Màn Hình Bằng Mã Vòi Phun (Luby-Transform Fountain)</h2>
+          <p>Chia tệp thành <b>K khối</b> rồi trộn XOR ngẫu nhiên tạo ra dòng suối mã ma trận 4 màu vô tận. Dù Camera bị chói đèn, đưa vào trễ hay <b>rớt mất 40% khung hình bất kỳ</b>, hễ hứng đủ <code>K + ~2</code> giọt là hệ phương trình <b>Gauss-Jordan GF(2)</b> giải ra 100% file gốc!</p>
+        </div>
+        <button id="btn-fountain-quick" class="btn-outline">⚡ Chạy Mô Phỏng Rớt 38% Khung Hình</button>
+      </div>
+
+      <div class="two-col">
+        <!-- CỘT TRÁI: ĐÈN PHÁT MA TRẬN 4 MÀU -->
+        <div class="card">
+          <h3>🌈 Đèn Chiếu Ma Trận 4 Màu (Optical Fountain Emitter)</h3>
+
+          <div class="row-2">
+            <div>
+              <label class="lbl">Tên tệp đính kèm</label>
+              <input id="ft-filename" type="text" class="input mono" value="ssh-airgap-vault.json" />
+            </div>
+            <div>
+              <label class="lbl">Hoặc chọn tệp nhỏ (&lt;12KB) từ máy</label>
+              <label class="btn-secondary file-btn full-w">
+                📎 Tải tệp lên đèn phát
+                <input id="ft-file-upload" type="file" hidden />
+              </label>
+            </div>
+          </div>
+
+          <label class="lbl">Nội dung cấu hình / khóa mật cần bắn qua màn hình</label>
+          <textarea id="ft-content" rows="4" class="textarea mono">{
+  "vault": "COLD-STORAGE-ALPHA",
+  "ed25519_pub": "MCowBQYDK2VwAyEA99a8f3b2c1d0e7f6a5b4c3d2e1f0",
+  "nodes": ["10.99.0.1", "10.99.0.2", "10.99.0.3"],
+  "note": "Truyền qua ánh sáng màn hình bằng mã Fountain GF(2) — Không cần Wi-Fi hay USB!"
+}</textarea>
+
+          <div class="row-2">
+            <div>
+              <label class="lbl">Tốc độ nháy khung hình</label>
+              <select id="ft-fps" class="select">
+                <option value="8">8 FPS (Webcam thường)</option>
+                <option value="12" selected>12 FPS (Tối ưu tốc độ)</option>
+                <option value="18">18 FPS (Turbo)</option>
+              </select>
+            </div>
+            <div>
+              <label class="lbl">Mật khẩu AES-256-GCM (Tùy chọn)</label>
+              <input id="ft-pass" type="password" class="input" placeholder="Khóa luồng quang học" />
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button id="btn-ft-start" class="btn-primary amber">🌈 Bật Đèn Chiếu Fountain Vô Tận</button>
+            <button id="btn-ft-stop" class="btn-ghost" disabled>⏹️ Dừng Chiếu</button>
+          </div>
+
+          <div class="optical-stage">
+            <canvas id="ft-matrix-canvas" width="324" height="324"></canvas>
+            <div id="ft-tx-info" class="mono-dim" style="margin-top:8px;">
+              18×18 Ô 4 Màu (2 bits/ô = 72 Bytes/khung + 4 Tâm Định Vị Góc + CRC-16)
+            </div>
+          </div>
+        </div>
+
+        <!-- CỘT PHẢI: BỘ GIẢI HỆ PHƯƠNG TRÌNH GF(2) & WEBCAM -->
+        <div class="card">
+          <div class="card-hdr">
+            <h3>🧮 Bộ Giải Ma Trận Tuyến Tính GF(2) &amp; Quét Webcam</h3>
+            <button id="btn-ft-webcam" class="btn-secondary small">📷 Quét Bằng Webcam Thật</button>
+          </div>
+
+          <video id="ft-video" autoplay playsinline muted class="webcam-preview hidden"></video>
+
+          <div class="sim-box" style="margin-top:0;margin-bottom:12px;">
+            <div class="row-2" style="align-items:end;">
+              <div>
+                <label class="lbl">Tỷ lệ rớt khung hình giả lập (Chói sáng / Che tay): <b id="drop-rate-lbl">38%</b></label>
+                <input id="ft-drop-rate" type="range" min="0" max="65" value="38" class="range" />
+              </div>
+              <button id="btn-ft-sim-rx" class="btn-primary cyan">⚡ Hứng Giọt Quang Học &amp; Giải GF(2)</button>
+            </div>
+          </div>
+
+          <div class="lbl">Tiến trình lấp đầy Hạng Ma Trận Độc Lập Tuyến Tính (GF(2) Gauss-Jordan Rank):</div>
+          <div class="rank-progress-bar">
+            <div id="ft-rank-fill" class="rank-fill" style="width:0%"></div>
+            <span id="ft-rank-text">Rank: 0 / 0 khối</span>
+          </div>
+
+          <div id="ft-blocks-grid" class="blocks-grid"></div>
+
+          <div class="decoded-pane" style="margin-top:12px;">
+            <div class="decoded-hdr-row">
+              <span class="decoded-title">TỆP KHÔI PHỤC TỪ HỆ PHƯƠNG TRÌNH XOR:</span>
+              <button id="btn-ft-download" class="btn-secondary small hidden">⬇️ Tải Tệp Đã Khôi Phục</button>
+            </div>
+            <pre id="ft-rx-output" class="decoded-pre">Bấm "⚡ Chạy Mô Phỏng Rớt 38% Khung Hình" để xem phép màu toán học của mã Fountain!</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- TRẠM 03: ACOUSTIC DESK-TAP RHYTHM VAULT                            -->
+    <!-- ================================================================== -->
+    <section id="panel-knock" class="panel">
+      <div class="hero-bar">
+        <div>
+          <h2>Trạm 03 — Két Sắt Mở Khóa Bằng Nhịp Gõ Tay Lên Mặt Bàn Gỗ (Không Chạm Bàn Phím)</h2>
+          <p>Thu xung chấn âm học khi bạn gõ ngón tay lên mặt bàn qua Micro (hoặc bấm phím Cách để thử). Hệ thống chuẩn hóa <b>tỷ lệ khoảng nghỉ bất biến tốc độ (Tempo-Invariant)</b> nên gõ nhanh hay chậm đều mở được miễn là đúng tiết tấu!</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>✊ Vùng Thu Nhịp Gõ (Nhịp Mặc Định: "Cốc — Cốc·Cốc·Cốc — Cốc" • 5 Tiếng)</h3>
+
+          <div class="btn-row">
+            <button id="btn-knock-mic" class="btn-primary">🎙️ Bật Micro Nghe Tiếng Gõ Mặt Bàn</button>
+            <button id="btn-knock-pad" class="btn-secondary">🥁 Gõ Bằng Chuột / Phím Space</button>
+            <button id="btn-knock-reset" class="btn-ghost">Xóa nhịp</button>
+          </div>
+
+          <div class="knock-pad" id="knock-pad">
+            <div class="knock-count" id="knock-count">0 tiếng gõ</div>
+            <div class="knock-sub">Gõ đủ nhịp rồi dừng 1.2 giây — Hệ thống sẽ tự động chấm điểm khớp tiết tấu!</div>
+          </div>
+
+          <div class="lbl">Biểu đồ khoảng cách thời gian giữa các tiếng gõ:</div>
+          <div id="knock-timeline" class="knock-timeline"></div>
+        </div>
+
+        <div class="card">
+          <h3>🔐 Trạng Thái Két Sắt Âm Học &amp; Đổi Nhịp Riêng</h3>
+
+          <div id="knock-result-box" class="decoded-pane">
+            <div class="decoded-title">KẾT QUẢ SO KHỚP TIẾT TẤU:</div>
+            <pre id="knock-output" class="decoded-pre">Hãy gõ thử 5 nhịp: [Cốc] ... (nghỉ dài) ... [Cốc-Cốc-Cốc] (nhanh) ... (nghỉ dài) ... [Cốc]!</pre>
+          </div>
+
+          <div class="sim-box">
+            <b>⚙️ Tự Ghi Âm Nhịp Gõ Bí Mật Mới Của Riêng Bạn</b>
+            <label class="lbl">Nội dung mật muốn cất vào két nhịp gõ:</label>
+            <input id="knock-custom-secret" type="text" class="input mono" value="SEED_PHRASE: orbit-velvet-quantum-4225" />
+            <button id="btn-knock-save-custom" class="btn-secondary full-w" style="margin-top:10px;">
+              💾 Lưu Nhịp Gõ Vừa Thực Hiện Làm Chìa Khóa Mới
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
